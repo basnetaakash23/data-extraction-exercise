@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.io.Reader;
 import java.io.UncheckedIOException;
 import java.math.BigDecimal;
+import java.nio.charset.Charset;
 import java.nio.charset.MalformedInputException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -35,11 +36,11 @@ public class DataProcessorHibernate {
     @Transactional // Ensures commit is handled properly
     public void importCSV(Path csvPath) throws Exception {
         try (
-                Reader reader = Files.newBufferedReader(csvPath, StandardCharsets.UTF_8);
+                Reader reader = Files.newBufferedReader(csvPath, Charset.forName("ISO-8859-1"));
                 CSVParser parser = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(reader)
         ) {
             int batchSize = 0;
-            int BATCH_LIMIT = 200;
+            int BATCH_LIMIT = 50;
 
             for (CSVRecord record : parser) {
                 Orders order = new Orders();

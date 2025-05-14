@@ -13,7 +13,9 @@ import java.io.IOException;
 import java.io.Reader;
 import java.io.UncheckedIOException;
 import java.math.BigDecimal;
+import java.nio.charset.Charset;
 import java.nio.charset.MalformedInputException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.*;
@@ -24,8 +26,6 @@ import java.time.format.DateTimeFormatter;
 public class DataProcessor {
     private final DataSource dataSource;
 
-
-
     public DataProcessor(DataSource dataSource) {
         this.dataSource = dataSource;
     }
@@ -34,7 +34,7 @@ public class DataProcessor {
         int batchSize = 0;
         CSVRecord recordGlobal = null;
         try (
-                Reader reader = Files.newBufferedReader(csvPath);
+                Reader reader = Files.newBufferedReader(csvPath, Charset.forName("ISO-8859-1"));
                 CSVParser parser = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(reader);
                 Connection conn = dataSource.getConnection()
         ) {
@@ -83,6 +83,8 @@ public class DataProcessor {
 
                 cs.execute();
                 conn.commit();
+            }catch(RuntimeException ex){
+                conn.rollback();
             }
         } catch (SQLException e) {
             System.out.println(e.getStackTrace());
@@ -91,8 +93,6 @@ public class DataProcessor {
         } catch(UncheckedIOException e){
 
             System.out.println(recordGlobal);
-
-            
             System.out.println(e.getStackTrace());
             logMalformedLine(errorWriter, batchSize, e);
         }
