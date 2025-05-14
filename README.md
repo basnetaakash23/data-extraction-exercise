@@ -1,6 +1,6 @@
 # data-extraction-exercise
 
-'''
+```
 CREATE OR REPLACE PROCEDURE insert_order(
     p_invoice_no TEXT,
     p_stock_code TEXT,
@@ -24,4 +24,4 @@ BEGIN
     );
 END;
 $$;
-'''
+```
