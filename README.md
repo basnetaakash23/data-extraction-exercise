@@ -25,3 +25,25 @@ BEGIN
 END;
 $$;
 ```
+### CREATE orders
+
+```
+CREATE TABLE orders (
+    id SERIAL PRIMARY KEY,
+    invoice_no VARCHAR(50),
+    stock_code VARCHAR(50),
+    description TEXT,
+    quantity INT,
+    invoice_date TIMESTAMP,
+    unit_price DECIMAL(10,2),
+    customer_id BIGINT,
+    country VARCHAR(100)
+);
+```
+###create sequence for usage with hibernate sequence id generation
+
+```
+DROP SEQUENCE IF EXISTS orders_v2_seq;
+
+CREATE SEQUENCE orders_v2_seq INCREMENT BY 200;
+```
