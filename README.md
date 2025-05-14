@@ -40,7 +40,7 @@ CREATE TABLE orders (
     country VARCHAR(100)
 );
 ```
-###create sequence for usage with hibernate sequence id generation
+### create sequence for usage with hibernate sequence id generation
 
 ```
 DROP SEQUENCE IF EXISTS orders_v2_seq;
