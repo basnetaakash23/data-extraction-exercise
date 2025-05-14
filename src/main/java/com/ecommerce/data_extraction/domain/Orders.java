@@ -17,7 +17,7 @@ public class Orders {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_seq_gen")
-    @SequenceGenerator(name = "order_seq_gen", sequenceName = "orders_v2_seq", allocationSize = 200)
+    @SequenceGenerator(name = "order_seq_gen", sequenceName = "orders_v2_seq", allocationSize = 50)
     private Long id;
 
     private String invoiceNo;
