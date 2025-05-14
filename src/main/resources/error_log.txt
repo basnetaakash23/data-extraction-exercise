@@ -1,0 +1,54 @@
+⚠️ Error at line 15: UncheckedIOException
+Message: MalformedInputException reading next record: java.nio.charset.MalformedInputException: Input length = 1
+----------------------------------------------------
+⚠️ Error at line 15: UncheckedIOException
+Message: MalformedInputException reading next record: java.nio.charset.MalformedInputException: Input length = 1
+----------------------------------------------------
+⚠️ Error at line 15: UncheckedIOException
+Message: MalformedInputException reading next record: java.nio.charset.MalformedInputException: Input length = 1
+----------------------------------------------------
+⚠️ Error at line 15: UncheckedIOException
+Message: MalformedInputException reading next record: java.nio.charset.MalformedInputException: Input length = 1
+----------------------------------------------------
+⚠️ Error at line 15: UncheckedIOException
+Message: MalformedInputException reading next record: java.nio.charset.MalformedInputException: Input length = 1
+----------------------------------------------------
+⚠️ Error at line 15: UncheckedIOException
+Message: MalformedInputException reading next record: java.nio.charset.MalformedInputException: Input length = 1
+----------------------------------------------------
+⚠️ Error at line 15: UncheckedIOException
+Message: MalformedInputException reading next record: java.nio.charset.MalformedInputException: Input length = 1
+----------------------------------------------------
+⚠️ Error at line 15: UncheckedIOException
+Message: MalformedInputException reading next record: java.nio.charset.MalformedInputException: Input length = 1
+----------------------------------------------------
+⚠️ Error at line 15: UncheckedIOException
+Message: MalformedInputException reading next record: java.nio.charset.MalformedInputException: Input length = 1
+----------------------------------------------------
+⚠️ Error at line 15: UncheckedIOException
+Message: MalformedInputException reading next record: java.nio.charset.MalformedInputException: Input length = 1
+----------------------------------------------------
+⚠️ Error at line 15: UncheckedIOException
+Message: MalformedInputException reading next record: java.nio.charset.MalformedInputException: Input length = 1
+----------------------------------------------------
+⚠️ Error at line 15: UncheckedIOException
+Message: MalformedInputException reading next record: java.nio.charset.MalformedInputException: Input length = 1
+----------------------------------------------------
+⚠️ Error at line 15: UncheckedIOException
+Message: MalformedInputException reading next record: java.nio.charset.MalformedInputException: Input length = 1
+----------------------------------------------------
+⚠️ Error at line 15: UncheckedIOException
+Message: MalformedInputException reading next record: java.nio.charset.MalformedInputException: Input length = 1
+----------------------------------------------------
+⚠️ Error at line 15: UncheckedIOException
+Message: MalformedInputException reading next record: java.nio.charset.MalformedInputException: Input length = 1
+----------------------------------------------------
+⚠️ Error at line 15: UncheckedIOException
+Message: MalformedInputException reading next record: java.nio.charset.MalformedInputException: Input length = 1
+----------------------------------------------------
+⚠️ Error at line 15: UncheckedIOException
+Message: MalformedInputException reading next record: java.nio.charset.MalformedInputException: Input length = 1
+----------------------------------------------------
+⚠️ Error at line 15: UncheckedIOException
+Message: MalformedInputException reading next record: java.nio.charset.MalformedInputException: Input length = 1
+----------------------------------------------------
