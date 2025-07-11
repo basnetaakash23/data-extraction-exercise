@@ -54,8 +54,9 @@ This repository contains a small Maven-based Spring Boot application that
 imports CSV data into PostgreSQL using two different approaches.
 
 - **DataExtractionApplication** – bootstraps Spring Boot.
-- **controller/DataController** – exposes `/process-data/jdbc` and
-  `/process-data/hibernate` endpoints to trigger the import.
+- **controller/DataController** – exposes `/process-data/jdbc`,
+  `/process-data/hibernate` and `/process-data/upload` endpoints to trigger the
+  import.
 - **service/DataProcessor** – calls the `insert_order` stored procedure in
   batches and logs malformed lines to `error_log.txt`.
 - **service/DataProcessorHibernate** – imports the same CSV data with JPA,
@@ -67,6 +68,18 @@ Configuration settings live in `src/main/resources/application.properties` and a
 sample dataset `data.csv` is provided in the same directory. Running the
 application requires the table, sequence, and stored procedure definitions shown
 above.
+
+### Uploading a custom CSV file
+
+You can POST a CSV directly to the application instead of relying on the bundled
+`data.csv` file:
+
+```bash
+curl -F file=@/path/to/your.csv http://localhost:8085/process-data/upload
+```
+
+The uploaded file is imported using both the stored procedure and Hibernate
+pipelines and then removed from disk when processing completes.
 
 A single test class (`DataExtractionApplicationTests`) currently verifies that
 the Spring context loads. Expanding tests and error handling would be useful
