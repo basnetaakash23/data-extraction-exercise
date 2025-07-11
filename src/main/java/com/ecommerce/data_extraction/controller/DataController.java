@@ -48,10 +48,10 @@ public class DataController {
     @PostMapping("/hibernate")
     public ResponseEntity<String> importDataHibernate() {
         try {
-            Path path = Paths.get("/Users/aakashbasnet/Projects/DataProcessing/data-extraction/src/main/resources/data.csv");
+            Path path = Paths.get("../src/main/resources/data.csv");
 
             dataProcessorHibernate.importCSV(path);
-            return ResponseEntity.ok("✅ Stored procedure import successful!");
+            return ResponseEntity.ok("✅ Hibernate import successful!");
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.status(500).body("❌ Import failed: " + e.getMessage());
