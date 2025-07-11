@@ -5,13 +5,16 @@ import com.ecommerce.data_extraction.service.DataProcessorHibernate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.BufferedWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.nio.file.StandardCopyOption;
 
 @RestController
 @RequestMapping("/process-data")
@@ -55,6 +58,37 @@ public class DataController {
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.status(500).body("❌ Import failed: " + e.getMessage());
+        }
+    }
+
+    @PostMapping("/upload")
+    public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file) {
+        Path tempFile = null;
+        try {
+            tempFile = Files.createTempFile("uploaded-", ".csv");
+            Files.copy(file.getInputStream(), tempFile, StandardCopyOption.REPLACE_EXISTING);
+
+            BufferedWriter errorWriter = Files.newBufferedWriter(
+                    Paths.get("../src/main/resources/error_log.txt"),
+                    StandardOpenOption.CREATE,
+                    StandardOpenOption.APPEND
+            );
+
+            dataProcessor.processWithStoredProcedure(tempFile, errorWriter);
+            dataProcessorHibernate.importCSV(tempFile);
+
+            return ResponseEntity.ok("✅ Upload import successful!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(500).body("❌ Import failed: " + e.getMessage());
+        } finally {
+            if (tempFile != null) {
+                try {
+                    Files.deleteIfExists(tempFile);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
         }
     }
 }
